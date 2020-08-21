@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         else 
         @user = User.create(params)
         session[:user_id]=@user.id
-        redirect '/login'
+        redirect '/workouts'
         end 
     end 
 
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
         @user = User.find_by(username: params[:username])
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id 
-            erb :index 
+            erb '/workouts'
         else
             redirect '/login' 
     end 
